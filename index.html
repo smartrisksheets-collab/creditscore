@@ -709,22 +709,47 @@
   });
 
   /* ── CTA form ── */
-  function handleCTA() {
-    var email = document.getElementById('cta-email').value.trim();
-    var msg   = document.getElementById('cta-msg');
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      msg.style.color = '#f09595';
-      msg.textContent = 'Please enter a valid work email address.';
-      return;
-    }
-    msg.style.color = '#01b88e';
-    msg.textContent = 'Thank you — we will be in touch within 24 hours.';
-    document.getElementById('cta-email').value = '';
+function handleCTA() {
+  var email = document.getElementById('cta-email').value.trim();
+  var msg   = document.getElementById('cta-msg');
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    msg.style.color = '#f09595';
+    msg.textContent = 'Please enter a valid work email address.';
+    return;
   }
 
-  document.getElementById('cta-email').addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') handleCTA();
+  msg.style.color = 'rgba(255,255,255,0.5)';
+  msg.textContent = 'Submitting...';
+
+  fetch('https://connect.mailerlite.com/api/subscribers', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiYjdiNTFlNGE0M2JkMTI3MmEwMmJiMjRhZDdlODk4M2JlNDU1YjMwYTU2ZDdjY2U1MzI3N2M3OTg4NDU3ZDAyZjIzMzk0NzU1MjZjNzE1NjMiLCJpYXQiOjE3NjUzMzQ3NTEuMTM3NTY5LCJuYmYiOjE3NjUzMzQ3NTEuMTM3NTcxLCJleHAiOjQ5MjEwMDgzNTEuMTMxNTIzLCJzdWIiOiIxNzI4ODkwIiwic2NvcGVzIjpbXX0.oYjws6cmMO5Gmc0SgP_5NkwUebsglDoDRyqTyNHvWUDGes8SvAZNVurUT9RMYW_BRN3s0AivHYq4bq9R2rCIddAaeOfPhgPZ9d7JlEZdFtdrPz9smzmJ3KMeA8L7c9gpd1GMVyw3ZgSg5cZtgtfPo5U202YuLhuG0pzLw-QjUQvoe8c-dTQ0SyvOADedHiPrWeVuo3UzyJ_5ohY19ikxf5p3FApZ85QiT3Xr1sW-ql3UUBPNFwQQjdgb3D1NAt31th2LEmzXmxABItmYyew76KGoAgjrU9GIqec-LDwnOOhL-Hnyx3PZ2P374ogAoHbto7otbD0PsPHjT2SCGOgLSH20ddK0eLsmcL1k7iQMQDobgOJP46AV8bMUGs9GDzHaz4eIkv2QdBoTeY3ueDTC-WQE1kEkutlQcnP5ZI4bzXIbdccPh78m69b5r6Z_q7YWU1syehC7jjqm48pVEe1hu8FRAOeP_-bHooEt9mrD1i3qVaewoGrK20Tn0Q1X-apbP8gdsJxjTI3jfpPSEgh1pmIQWmvvv4nS5xKkkWYhZ2VxljEMaKnSsMY7EO4Om0Zlj1OHsC6dgojFvJH2U9XEBEuBsrssxn_x98vFTOd0ZRb6gf8eJnsQBUEng1GmP1UArYmj14xg_7p_87toyK3oyiSfRk-wQNTx6GhqZDBbTdU'
+    },
+    body: JSON.stringify({
+      email: email,
+      groups: ['173343811148187088']
+    })
+  })
+  .then(function(res) {
+    if (res.ok || res.status === 200 || res.status === 201) {
+      msg.style.color = '#01b88e';
+      msg.textContent = 'Thank you — we will be in touch within 24 hours.';
+      document.getElementById('cta-email').value = '';
+    } else {
+      return res.json().then(function(d) {
+        throw new Error(d.message || 'Submission failed');
+      });
+    }
+  })
+  .catch(function(err) {
+    msg.style.color = '#f09595';
+    msg.textContent = 'Something went wrong. Please email hello@smartrisksheets.com directly.';
   });
+}
+
+  
 </script>
 
 </body>
