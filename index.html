@@ -725,7 +725,7 @@ function handleCTA() {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiYjdiNTFlNGE0M2JkMTI3MmEwMmJiMjRhZDdlODk4M2JlNDU1YjMwYTU2ZDdjY2U1MzI3N2M3OTg4NDU3ZDAyZjIzMzk0NzU1MjZjNzE1NjMiLCJpYXQiOjE3NjUzMzQ3NTEuMTM3NTY5LCJuYmYiOjE3NjUzMzQ3NTEuMTM3NTcxLCJleHAiOjQ5MjEwMDgzNTEuMTMxNTIzLCJzdWIiOiIxNzI4ODkwIiwic2NvcGVzIjpbXX0.oYjws6cmMO5Gmc0SgP_5NkwUebsglDoDRyqTyNHvWUDGes8SvAZNVurUT9RMYW_BRN3s0AivHYq4bq9R2rCIddAaeOfPhgPZ9d7JlEZdFtdrPz9smzmJ3KMeA8L7c9gpd1GMVyw3ZgSg5cZtgtfPo5U202YuLhuG0pzLw-QjUQvoe8c-dTQ0SyvOADedHiPrWeVuo3UzyJ_5ohY19ikxf5p3FApZ85QiT3Xr1sW-ql3UUBPNFwQQjdgb3D1NAt31th2LEmzXmxABItmYyew76KGoAgjrU9GIqec-LDwnOOhL-Hnyx3PZ2P374ogAoHbto7otbD0PsPHjT2SCGOgLSH20ddK0eLsmcL1k7iQMQDobgOJP46AV8bMUGs9GDzHaz4eIkv2QdBoTeY3ueDTC-WQE1kEkutlQcnP5ZI4bzXIbdccPh78m69b5r6Z_q7YWU1syehC7jjqm48pVEe1hu8FRAOeP_-bHooEt9mrD1i3qVaewoGrK20Tn0Q1X-apbP8gdsJxjTI3jfpPSEgh1pmIQWmvvv4nS5xKkkWYhZ2VxljEMaKnSsMY7EO4Om0Zlj1OHsC6dgojFvJH2U9XEBEuBsrssxn_x98vFTOd0ZRb6gf8eJnsQBUEng1GmP1UArYmj14xg_7p_87toyK3oyiSfRk-wQNTx6GhqZDBbTdU'
+      'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiMTM5NWNiOTdiOTM3ZTVjZWI5ZTMyMTU4ZDBlZjc1YjY3OTE3NjIzZDRkMzUzNmJmMzc1N2U0ZGVjYzU1YTkxZGJjNTZmYWNhNTYzYjgxYjEiLCJpYXQiOjE3NzYxNTg0MDQuMjkwMzc4LCJuYmYiOjE3NzYxNTg0MDQuMjkwMzgsImV4cCI6NDkzMTgzMjAwNC4yODU1NDQsInN1YiI6IjE3Mjg4OTAiLCJzY29wZXMiOltdfQ.rPuxz8z8Ek-w7DLOTkIOgIDwocOt5FUtFuZwVuT4oQLUuv5MeRTG-YIyNzPQWPgxu41Ue4TZR-VCb9EywlNE_ZatQIbMfUizd_tH89Mich7OvECUHIQP7TzTbhRiEnffR1BUUsVpek9_t-CoIrOa91fpzjdIBjQMA-vS1gCmdOVUc2pix-O1RkOQmtkv9Q-Ifxq_jFpJjx8e7NxBl0bgTW7IC7gbn3X9FTq34IExb8sR-HgnPU8yeY1KsvcF9oL0KYWI5IyYK-bqZMQDWtlqThC5JtjjYETff6NRtJPZlzza17BCtgAU-N8cXfb3PUwrrR_p6AaG4gUbTJvuuCJopZt8hcCLsoztHiB291_MDf7kWUMdP47dFDrE64RX8Bw0T3C8qDCX9z60oYjrsY4WTQ2EIO-qf5dqYUmhHfZfBOH6V7_Qg_WA4Ke1Hh3KypCPG2bi6lotGYndlqs3syueakfmhQWY53gK_zQ56kN-Ht1su95wq2pdBj0Uf94xnWnpXncQ3sMrHjsNHGbbRKbxRBgbthsxZqveZk5-rx_ey2TNLc234cMoA_2kQTicBZBSW5jAJ1rog1mIsnUiIQ8WDw4V0dBG4HYIFzMgQSvGY_W6axnR_vbfskWHjccmuJyvNurH6LVf0hTqxK_jLOqp44CTyQyMCdGqOSc6QdzX0ec'
     },
     body: JSON.stringify({
       email: email,
@@ -735,7 +735,7 @@ function handleCTA() {
   .then(function(res) {
     if (res.ok || res.status === 200 || res.status === 201) {
       msg.style.color = '#01b88e';
-      msg.textContent = 'Thank you — we will be in touch within 24 hours.';
+      msg.textContent = 'Thank you — we will notify you when the app goes live.';
       document.getElementById('cta-email').value = '';
     } else {
       return res.json().then(function(d) {
@@ -745,7 +745,7 @@ function handleCTA() {
   })
   .catch(function(err) {
     msg.style.color = '#f09595';
-    msg.textContent = 'Something went wrong. Please email hello@smartrisksheets.com directly.';
+    msg.textContent = 'Something went wrong. Please email info@smartrisksheets.com directly.';
   });
 }
 
