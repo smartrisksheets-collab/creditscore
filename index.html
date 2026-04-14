@@ -723,7 +723,7 @@
 </script>
 
 <script data-cfasync="false">
-  /* ── CTA form ── */
+  /* ── CTA form — calls Cloudflare Worker proxy to avoid CORS ── */
   function handleCTA() {
     var email = document.getElementById('cta-email').value.trim();
     var msg   = document.getElementById('cta-msg');
@@ -737,27 +737,27 @@
     msg.style.color = 'rgba(255,255,255,0.5)';
     msg.textContent = 'Submitting...';
 
-    var form = document.createElement('form');
-    form.method  = 'POST';
-    form.action  = 'https://assets.mailerlite.com/jsonp/1715241/forms/a6VoNr/subscribe';
-    form.target  = 'ml-silent';
-    form.style.display = 'none';
+    fetch('https://ml-proxy.smartrisksheets.workers.dev/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email })
+    })
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      msg.style.color = '#01b88e';
+      msg.textContent = 'Thank you — check your inbox to confirm your spot on the waitlist.';
+      document.getElementById('cta-email').value = '';
+    })
+    .catch(function() {
+      msg.style.color = '#f09595';
+      msg.textContent = 'Something went wrong. Please email info@smartrisksheets.com directly.';
+    });
+  }
 
-    var f1 = document.createElement('input');
-    f1.type = 'hidden'; f1.name = 'fields[email]'; f1.value = email;
-    form.appendChild(f1);
+  document.getElementById('cta-email').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') handleCTA();
+  });
+</script>
 
-    var f2 = document.createElement('input');
-    f2.type = 'hidden'; f2.name = 'ml-submit'; f2.value = '1';
-    form.appendChild(f2);
-
-    var f3 = document.createElement('input');
-    f3.type = 'hidden'; f3.name = 'antispam'; f3.value = '';
-    form.appendChild(f3);
-
-    document.body.appendChild(form);
-    form.submit();
-    document.body.removeChild(form);
-
-    setTimeout(function() {
-      msg.style.color = '#01b88
+</body>
+</html>
