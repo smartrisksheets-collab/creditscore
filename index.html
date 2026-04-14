@@ -664,6 +664,9 @@
   </div>
 </section>
 
+<!-- Hidden iframe — catches the MailerLite form POST silently -->
+<iframe name="ml-silent" style="display:none" aria-hidden="true"></iframe>
+
 <!-- CTA -->
 <section class="cta-sec" id="contact">
   <h2 class="cta-h">Ready to cut your credit analysis time in half?</h2>
@@ -717,11 +720,12 @@
     });
   });
 
-  /* ── CTA form — submits to MailerLite Waitlist via jsonp (no CORS) ── */
+  /* ── CTA form — posts to MailerLite via hidden iframe (no CORS, no redirect) ── */
   function handleCTA() {
     var email = document.getElementById('cta-email').value.trim();
     var msg   = document.getElementById('cta-msg');
 
+    // Validate email
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       msg.style.color = '#f09595';
       msg.textContent = 'Please enter a valid work email address.';
@@ -731,35 +735,35 @@
     msg.style.color = 'rgba(255,255,255,0.5)';
     msg.textContent = 'Submitting...';
 
-    // Use JSONP — no CORS, works directly from any browser
-    var callbackName = 'mlCallback_' + Date.now();
-    var script = document.createElement('script');
+    // Build a hidden form and POST it into the silent iframe
+    // MailerLite accepts this and adds the subscriber to the Waitlist group
+    var form = document.createElement('form');
+    form.method  = 'POST';
+    form.action  = 'https://assets.mailerlite.com/jsonp/1715341/forms/a0XkMe/subscribe';
+    form.target  = 'ml-silent';  // post into hidden iframe — no page redirect
+    form.style.display = 'none';
 
-    window[callbackName] = function(response) {
-      delete window[callbackName];
-      document.body.removeChild(script);
-      if (response && (response.success || response.status === 'subscribed' || response.status === 'active')) {
-        msg.style.color = '#01b88e';
-        msg.textContent = 'Thank you — we will notify you when the app goes live.';
-        document.getElementById('cta-email').value = '';
-      } else {
-        msg.style.color = '#01b88e';
-        // Treat all responses as success — double opt-in means email is sent
-        msg.textContent = 'Thank you — we will notify you when the app goes live.';
-        document.getElementById('cta-email').value = '';
-      }
-    };
+    var emailField = document.createElement('input');
+    emailField.type  = 'hidden';
+    emailField.name  = 'fields[email]';
+    emailField.value = email;
+    form.appendChild(emailField);
 
-    script.onerror = function() {
-      delete window[callbackName];
-      document.body.removeChild(script);
-      msg.style.color = '#f09595';
-      msg.textContent = 'Something went wrong. Please email info@smartrisksheets.com directly.';
-    };
+    // MailerLite requires an antispam field
+    var antispam = document.createElement('input');
+    antispam.type  = 'hidden';
+    antispam.name  = 'ml-submit';
+    antispam.value = '1';
+    form.appendChild(antispam);
 
-    script.src = 'https://assets.mailerlite.com/jsonp/1715341/forms/a0XkMe/subscribe' +
-                 '?callback=' + callbackName +
-                 '&fields[email]=' + encodeURIComponent(email);
+    document.body.appendChild(form);
+    form.submit();
+    document.body.removeChild(form);
 
-    document.body.appendChild(script);
+    // Show success immediately — double opt-in confirmation email will follow
+    setTimeout(function() {
+      msg.style.color = '#01b88e';
+      msg.textContent = 'Thank you — check your inbox to confirm your spot on the waitlist.';
+      document.getElementById('cta-email').value = '';
+    }, 400);
   }
