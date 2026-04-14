@@ -47,13 +47,15 @@
       border-bottom: 1px solid rgba(255,255,255,0.06);
     }
     .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .logo-mark {
-      width: 34px; height: 34px;
-      background: var(--em);
+
+    /* ── LOGO: real image replaces the old .logo-mark div ── */
+    .logo-img {
+      width: 36px; height: 36px;
       border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      color: #fff; font-weight: 700; font-size: 14px; letter-spacing: -0.5px;
+      object-fit: contain;
+      flex-shrink: 0;
     }
+
     .logo-text { color: #fff; font-size: 15px; font-weight: 600; }
     .logo-text span { color: var(--em); }
     .logo-text small { color: rgba(255,255,255,0.3); font-size: 11px; font-weight: 400; margin-left: 8px; }
@@ -68,6 +70,66 @@
       transition: background 0.15s;
     }
     .nav-cta:hover { background: var(--em2); }
+
+    /* ── HAMBURGER BUTTON ── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px; height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      transition: transform 0.25s, opacity 0.25s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ── MOBILE DRAWER ── */
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      background: var(--navy);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      position: sticky;
+      top: 66px;
+      z-index: 99;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav-link {
+      color: rgba(255,255,255,0.65);
+      font-size: 15px;
+      font-weight: 500;
+      padding: 16px 24px;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: color 0.15s, background 0.15s;
+    }
+    .mobile-nav-link:hover { color: #fff; background: rgba(255,255,255,0.04); }
+    .mobile-nav-cta {
+      margin: 14px 24px 20px;
+      padding: 14px;
+      background: var(--em);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      text-align: center;
+      transition: background 0.15s;
+    }
+    .mobile-nav-cta:hover { background: var(--em2); }
 
     /* ── HERO ── */
     .hero {
@@ -343,8 +405,11 @@
     .li-btn svg { width: 14px; height: 14px; fill: rgba(255,255,255,0.35); transition: fill 0.15s; }
     .li-btn:hover svg { fill: var(--em); }
 
+    /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       .nav { padding: 0 24px; }
+      .nav-links { display: none; }          /* hide desktop links */
+      .hamburger { display: flex; }          /* show hamburger */
       .hero { grid-template-columns: 1fr; padding: 60px 24px; }
       .mock { display: none; }
       .trust { grid-template-columns: repeat(2,1fr); padding: 28px 24px; }
@@ -363,9 +428,15 @@
 <!-- NAV -->
 <nav class="nav">
   <a class="nav-logo" href="#">
-    <div class="logo-mark">SR</div>
+    <!-- Real logo image — falls back gracefully if it fails to load -->
+    <img class="logo-img"
+         src="http://smartrisksheets.com/wp-content/uploads/2025/09/cropped-Smartrisksheets-favicon-v2.png"
+         alt="SmartRisk"
+         onerror="this.style.display='none'">
     <div class="logo-text">SmartRisk <span>Credit</span><small>by SmartRisk Sheets</small></div>
   </a>
+
+  <!-- Desktop nav links (hidden on mobile) -->
   <div class="nav-links">
     <a class="nav-link" href="#how">How it works</a>
     <a class="nav-link" href="#scoring">Scoring</a>
@@ -373,7 +444,23 @@
     <a class="nav-link" href="#contact">Contact</a>
     <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Request Access</button>
   </div>
+
+  <!-- Hamburger button (visible on mobile only) -->
+  <button class="hamburger" id="hamburger-btn" onclick="toggleNav()" aria-label="Toggle navigation">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </nav>
+
+<!-- Mobile drawer (hidden by default, toggled by hamburger) -->
+<div class="mobile-nav" id="mobile-nav">
+  <a class="mobile-nav-link" href="#how"     onclick="closeNav()">How it works</a>
+  <a class="mobile-nav-link" href="#scoring" onclick="closeNav()">Scoring</a>
+  <a class="mobile-nav-link" href="#pricing" onclick="closeNav()">Pricing</a>
+  <a class="mobile-nav-link" href="#contact" onclick="closeNav()">Contact</a>
+  <button class="mobile-nav-cta" onclick="closeNav(); document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Request Access</button>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -595,6 +682,33 @@
 </footer>
 
 <script>
+  /* ── Hamburger toggle ── */
+  function toggleNav() {
+    var btn  = document.getElementById('hamburger-btn');
+    var menu = document.getElementById('mobile-nav');
+    var open = menu.classList.contains('open');
+    if (open) {
+      menu.classList.remove('open');
+      btn.classList.remove('open');
+    } else {
+      menu.classList.add('open');
+      btn.classList.add('open');
+    }
+  }
+
+  function closeNav() {
+    document.getElementById('mobile-nav').classList.remove('open');
+    document.getElementById('hamburger-btn').classList.remove('open');
+  }
+
+  /* Close drawer when any nav link is tapped (smooth scroll handles the rest) */
+  document.querySelectorAll('.mobile-nav-link').forEach(function(link) {
+    link.addEventListener('click', function() {
+      setTimeout(closeNav, 80);
+    });
+  });
+
+  /* ── CTA form ── */
   function handleCTA() {
     var email = document.getElementById('cta-email').value.trim();
     var msg   = document.getElementById('cta-msg');
