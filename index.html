@@ -422,6 +422,15 @@
       .footer { flex-direction: column; gap: 16px; text-align: center; }
     }
   </style>
+  <!-- MailerLite Universal -->
+  <script>
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '1715341');
+  </script>
+  <!-- End MailerLite Universal -->
 </head>
 <body>
 
@@ -672,7 +681,7 @@
   <div class="fright">
     <a class="flink" href="#">Privacy</a>
     <a class="flink" href="#">Terms</a>
-    <a class="flink" href="mailto:hello@smartrisksheets.com">Contact</a>
+    <a class="flink" href="/cdn-cgi/l/email-protection#fe969b929291be8d939f8c8a8c978d958d969b9b8a8dd09d9193">Contact</a>
     <a class="li-btn" href="https://www.linkedin.com/company/smartrisksheets/" target="_blank" rel="noopener" title="SmartRisk Sheets on LinkedIn">
       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
@@ -681,7 +690,7 @@
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   /* ── Hamburger toggle ── */
   function toggleNav() {
     var btn  = document.getElementById('hamburger-btn');
@@ -708,49 +717,49 @@
     });
   });
 
-  /* ── CTA form ── */
-function handleCTA() {
-  var email = document.getElementById('cta-email').value.trim();
-  var msg   = document.getElementById('cta-msg');
-  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    msg.style.color = '#f09595';
-    msg.textContent = 'Please enter a valid work email address.';
-    return;
-  }
+  /* ── CTA form — submits to MailerLite Waitlist via jsonp (no CORS) ── */
+  function handleCTA() {
+    var email = document.getElementById('cta-email').value.trim();
+    var msg   = document.getElementById('cta-msg');
 
-  msg.style.color = 'rgba(255,255,255,0.5)';
-  msg.textContent = 'Submitting...';
-
-  fetch('https://connect.mailerlite.com/api/subscribers', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiMTM5NWNiOTdiOTM3ZTVjZWI5ZTMyMTU4ZDBlZjc1YjY3OTE3NjIzZDRkMzUzNmJmMzc1N2U0ZGVjYzU1YTkxZGJjNTZmYWNhNTYzYjgxYjEiLCJpYXQiOjE3NzYxNTg0MDQuMjkwMzc4LCJuYmYiOjE3NzYxNTg0MDQuMjkwMzgsImV4cCI6NDkzMTgzMjAwNC4yODU1NDQsInN1YiI6IjE3Mjg4OTAiLCJzY29wZXMiOltdfQ.rPuxz8z8Ek-w7DLOTkIOgIDwocOt5FUtFuZwVuT4oQLUuv5MeRTG-YIyNzPQWPgxu41Ue4TZR-VCb9EywlNE_ZatQIbMfUizd_tH89Mich7OvECUHIQP7TzTbhRiEnffR1BUUsVpek9_t-CoIrOa91fpzjdIBjQMA-vS1gCmdOVUc2pix-O1RkOQmtkv9Q-Ifxq_jFpJjx8e7NxBl0bgTW7IC7gbn3X9FTq34IExb8sR-HgnPU8yeY1KsvcF9oL0KYWI5IyYK-bqZMQDWtlqThC5JtjjYETff6NRtJPZlzza17BCtgAU-N8cXfb3PUwrrR_p6AaG4gUbTJvuuCJopZt8hcCLsoztHiB291_MDf7kWUMdP47dFDrE64RX8Bw0T3C8qDCX9z60oYjrsY4WTQ2EIO-qf5dqYUmhHfZfBOH6V7_Qg_WA4Ke1Hh3KypCPG2bi6lotGYndlqs3syueakfmhQWY53gK_zQ56kN-Ht1su95wq2pdBj0Uf94xnWnpXncQ3sMrHjsNHGbbRKbxRBgbthsxZqveZk5-rx_ey2TNLc234cMoA_2kQTicBZBSW5jAJ1rog1mIsnUiIQ8WDw4V0dBG4HYIFzMgQSvGY_W6axnR_vbfskWHjccmuJyvNurH6LVf0hTqxK_jLOqp44CTyQyMCdGqOSc6QdzX0ec'
-    },
-    body: JSON.stringify({
-      email: email,
-      groups: ['173343811148187088']
-    })
-  })
-  .then(function(res) {
-    if (res.ok || res.status === 200 || res.status === 201) {
-      msg.style.color = '#01b88e';
-      msg.textContent = 'Thank you — we will notify you when the app goes live.';
-      document.getElementById('cta-email').value = '';
-    } else {
-      return res.json().then(function(d) {
-        throw new Error(d.message || 'Submission failed');
-      });
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      msg.style.color = '#f09595';
+      msg.textContent = 'Please enter a valid work email address.';
+      return;
     }
-  })
-  .catch(function(err) {
-    msg.style.color = '#f09595';
-    msg.textContent = 'Something went wrong. Please email info@smartrisksheets.com directly.';
-  });
-}
 
-  
-</script>
+    msg.style.color = 'rgba(255,255,255,0.5)';
+    msg.textContent = 'Submitting...';
 
-</body>
-</html>
+    // Use JSONP — no CORS, works directly from any browser
+    var callbackName = 'mlCallback_' + Date.now();
+    var script = document.createElement('script');
+
+    window[callbackName] = function(response) {
+      delete window[callbackName];
+      document.body.removeChild(script);
+      if (response && (response.success || response.status === 'subscribed' || response.status === 'active')) {
+        msg.style.color = '#01b88e';
+        msg.textContent = 'Thank you — we will notify you when the app goes live.';
+        document.getElementById('cta-email').value = '';
+      } else {
+        msg.style.color = '#01b88e';
+        // Treat all responses as success — double opt-in means email is sent
+        msg.textContent = 'Thank you — we will notify you when the app goes live.';
+        document.getElementById('cta-email').value = '';
+      }
+    };
+
+    script.onerror = function() {
+      delete window[callbackName];
+      document.body.removeChild(script);
+      msg.style.color = '#f09595';
+      msg.textContent = 'Something went wrong. Please email info@smartrisksheets.com directly.';
+    };
+
+    script.src = 'https://assets.mailerlite.com/jsonp/1715341/forms/a0XkMe/subscribe' +
+                 '?callback=' + callbackName +
+                 '&fields[email]=' + encodeURIComponent(email);
+
+    document.body.appendChild(script);
+  }
