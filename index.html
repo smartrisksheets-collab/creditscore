@@ -47,15 +47,12 @@
       border-bottom: 1px solid rgba(255,255,255,0.06);
     }
     .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-
-    /* ── LOGO: real image replaces the old .logo-mark div ── */
     .logo-img {
       width: 36px; height: 36px;
       border-radius: 8px;
       object-fit: contain;
       flex-shrink: 0;
     }
-
     .logo-text { color: #fff; font-size: 15px; font-weight: 600; }
     .logo-text span { color: var(--em); }
     .logo-text small { color: rgba(255,255,255,0.3); font-size: 11px; font-weight: 400; margin-left: 8px; }
@@ -71,7 +68,7 @@
     }
     .nav-cta:hover { background: var(--em2); }
 
-    /* ── HAMBURGER BUTTON ── */
+    /* ── HAMBURGER ── */
     .hamburger {
       display: none;
       flex-direction: column;
@@ -408,8 +405,8 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       .nav { padding: 0 24px; }
-      .nav-links { display: none; }          /* hide desktop links */
-      .hamburger { display: flex; }          /* show hamburger */
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
       .hero { grid-template-columns: 1fr; padding: 60px 24px; }
       .mock { display: none; }
       .trust { grid-template-columns: repeat(2,1fr); padding: 28px 24px; }
@@ -499,15 +496,12 @@
 <!-- NAV -->
 <nav class="nav">
   <a class="nav-logo" href="#">
-    <!-- Real logo image — falls back gracefully if it fails to load -->
     <img class="logo-img"
          src="http://smartrisksheets.com/wp-content/uploads/2025/09/cropped-Smartrisksheets-favicon-v2.png"
          alt="SmartRisk"
          onerror="this.style.display='none'">
     <div class="logo-text">SmartRisk <span>Credit</span><small>by SmartRisk Sheets</small></div>
   </a>
-
-  <!-- Desktop nav links (hidden on mobile) -->
   <div class="nav-links">
     <a class="nav-link" href="#how">How it works</a>
     <a class="nav-link" href="#scoring">Scoring</a>
@@ -515,16 +509,12 @@
     <a class="nav-link" href="mailto:info@smartrisksheets.com">Contact</a>
     <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Request Access</button>
   </div>
-
-  <!-- Hamburger button (visible on mobile only) -->
   <button class="hamburger" id="hamburger-btn" onclick="toggleNav()" aria-label="Toggle navigation">
-    <span></span>
-    <span></span>
-    <span></span>
+    <span></span><span></span><span></span>
   </button>
 </nav>
 
-<!-- Mobile drawer (hidden by default, toggled by hamburger) -->
+<!-- Mobile drawer -->
 <div class="mobile-nav" id="mobile-nav">
   <a class="mobile-nav-link" href="#how"     onclick="closeNav()">How it works</a>
   <a class="mobile-nav-link" href="#scoring" onclick="closeNav()">Scoring</a>
@@ -545,12 +535,13 @@
     </div>
     <div class="hero-stats">
       <div class="hstat"><div class="hstat-v">~60s</div><div class="hstat-l">Per assessment</div></div>
-      <div class="hstat"><div class="hstat-v">FMDQ</div><div class="hstat-l">Aligned standards</div></div>
-      <div class="hstat"><div class="hstat-v">45 pts</div><div class="hstat-l">Max score</div></div>
+      <div class="hstat"><div class="hstat-v">IFRS</div><div class="hstat-l">Nigerian audited financials</div></div>
+      <!-- ── UPDATED: 56 pts max ── -->
+      <div class="hstat"><div class="hstat-v">56 pts</div><div class="hstat-l">Max score</div></div>
     </div>
   </div>
 
-  <!-- MINI APP MOCKUP -->
+  <!-- MINI APP MOCKUP — updated scores to reflect 10-ratio model -->
   <div class="mock">
     <div class="mock-hd">
       <div class="mock-hd-t">SMARTRISK CREDIT</div>
@@ -570,27 +561,29 @@
         <div class="mup-ok">&#10003; FlourMills_FS_2024.pdf — ready</div>
       </div>
       <div class="ml">Score Preview</div>
-      <div class="mrow"><span class="mrow-n">Coverage metrics</span><span class="mrow-v">11 / 14</span></div>
+      <div class="mrow"><span class="mrow-n">Liquidity &amp; profitability</span><span class="mrow-v">15 / 20</span></div>
       <div class="mrow"><span class="mrow-n">Leverage metrics</span><span class="mrow-v">8 / 10</span></div>
-      <div class="mrow"><span class="mrow-n">Distress model</span><span class="mrow-v">8 / 10</span></div>
+      <div class="mrow"><span class="mrow-n">Coverage &amp; distress</span><span class="mrow-v">20 / 26</span></div>
       <div class="mverd">
-        <div class="mverd-t">ELIGIBLE — 38 / 45</div>
-        <div class="mverd-s">Exceeds 25-point threshold by 13 points</div>
+        <!-- ── UPDATED: 43 / 56, exceeds 34-point threshold ── -->
+        <div class="mverd-t">ELIGIBLE — 43 / 56</div>
+        <div class="mverd-s">Exceeds 34-point threshold by 9 points</div>
       </div>
       <button class="mbtn">Download Report</button>
     </div>
   </div>
 </section>
 
-<!-- TRUST STRIP -->
+<!-- TRUST STRIP — AI mention made generic, no model names -->
 <div class="trust">
   <div class="titem"><div class="tval">200+</div><div class="tlbl">Licensed asset managers in Nigeria</div></div>
-  <div class="titem"><div class="tval">SEC / FMDQ</div><div class="tlbl">Aligned with CP issuance requirements</div></div>
-  <div class="titem"><div class="tval">AI-powered</div><div class="tlbl">GPT-4o figure extraction</div></div>
+  <div class="titem"><div class="tval">IFRS-based</div><div class="tlbl">Built for Nigerian audited financials</div></div>
+  <!-- ── UPDATED: removed specific AI model name ── -->
+  <div class="titem"><div class="tval">AI-powered</div><div class="tlbl">Automated figure extraction from PDF</div></div>
   <div class="titem"><div class="tval">PDF-ready</div><div class="tlbl">Investment-committee report in one click</div></div>
 </div>
 
-<!-- HOW IT WORKS -->
+<!-- HOW IT WORKS — step 2 description updated, no AI model names -->
 <section class="sec sec-white" id="how">
   <div class="sec-c">
     <div class="sec-ey">How it works</div>
@@ -601,35 +594,40 @@
     <div class="scard">
       <div class="snum">1</div>
       <div class="stitle">Upload financials</div>
+      <!-- ── unchanged ── -->
       <div class="sdesc">Upload the company's financial statement PDF and optional credit rating report. The system validates both before proceeding.</div>
       <div class="sconn"></div>
     </div>
     <div class="scard">
       <div class="snum">2</div>
       <div class="stitle">Review AI-extracted figures</div>
-      <div class="sdesc">GPT-4o extracts all key figures automatically. Review, correct where needed, and enter CP terms — all in one screen.</div>
+      <!-- ── UPDATED: removed GPT-4o reference ── -->
+      <div class="sdesc">Our AI engine extracts all key financial figures automatically from the uploaded PDF. Review, correct where needed, and enter CP terms — all in one screen.</div>
       <div class="sconn"></div>
     </div>
     <div class="scard">
       <div class="snum">3</div>
       <div class="stitle">View computed scores</div>
+      <!-- ── unchanged ── -->
       <div class="sdesc">Quantitative ratios scored instantly against internal benchmarks. Bands, scores, and eligibility verdict displayed clearly.</div>
       <div class="sconn"></div>
     </div>
     <div class="scard">
       <div class="snum">4</div>
       <div class="stitle">Download PDF report</div>
+      <!-- ── unchanged ── -->
       <div class="sdesc">Edit AI-generated narrative for a human touch, then download a professional, investment-committee-ready PDF report.</div>
     </div>
   </div>
 </section>
 
-<!-- SCORING ENGINE -->
+<!-- SCORING ENGINE — updated to 10 metrics, 56 pts, 34-pt threshold, no ratio names -->
 <section class="sec sec-navy" id="scoring">
   <div class="sec-c">
     <div class="sec-ey">Scoring engine</div>
     <h2 class="sec-h2">Rigorous. Quantitative. Built for Nigerian capital markets.</h2>
-    <p class="sec-sub">Every assessment is evaluated across four dimensions of financial health, following internationally recognised credit analysis best practice — calibrated for the Nigerian operating environment.</p>
+    <!-- ── UPDATED: 5 dimensions not 4 ── -->
+    <p class="sec-sub">Every assessment is evaluated across five dimensions of financial health, following internationally recognised credit analysis best practice — calibrated for the Nigerian operating environment.</p>
   </div>
   <div class="dim-grid">
     <div class="dcard">
@@ -647,8 +645,9 @@
         <svg viewBox="0 0 20 20"><path d="M3 15 L7 9 L11 12 L16 5"/></svg>
       </div>
       <div>
-        <div class="dname">Profitability metrics</div>
-        <div class="ddesc">Evaluates earnings quality, margin sustainability, and return on assets. Determines whether the business generates sufficient profit to support its obligations.</div>
+        <div class="dname">Profitability &amp; growth</div>
+        <!-- ── UPDATED: mentions revenue growth dimension ── -->
+        <div class="ddesc">Evaluates earnings quality, margin sustainability, revenue growth trajectory, and return on assets — determining whether the business generates sufficient profit to support its obligations.</div>
         <div class="dpill">Earnings quality</div>
       </div>
     </div>
@@ -667,19 +666,32 @@
         <svg viewBox="0 0 20 20"><path d="M4 16 L10 6 L16 16 M7 13h6"/></svg>
       </div>
       <div>
-        <div class="dname">Coverage &amp; distress prediction</div>
-        <div class="ddesc">Scores debt serviceability from operating earnings and applies a globally recognised multi-factor distress prediction model widely used in fixed income markets.</div>
+        <!-- ── UPDATED: now explicitly includes interest coverage ── -->
+        <div class="dname">Debt service &amp; coverage</div>
+        <div class="ddesc">Scores the issuer's capacity to service debt from operating earnings, including interest coverage and cash flow adequacy — the most direct measure of repayment risk.</div>
+        <div class="dpill">Repayment capacity</div>
+      </div>
+    </div>
+    <!-- ── NEW 5th dimension card ── -->
+    <div class="dcard" style="grid-column: 1 / -1;">
+      <div class="dicon">
+        <svg viewBox="0 0 20 20"><path d="M10 3 L13 8 L18 9 L14 13 L15 18 L10 16 L5 18 L6 13 L2 9 L7 8 Z"/></svg>
+      </div>
+      <div>
+        <div class="dname">Financial distress prediction</div>
+        <div class="ddesc">Applies a globally recognised multi-factor quantitative model that combines five balance sheet and income statement variables to generate a composite score predictive of corporate financial distress. Widely used in fixed income credit analysis worldwide.</div>
         <div class="dpill">Bankruptcy signal</div>
       </div>
     </div>
   </div>
+  <!-- ── UPDATED: 10 metrics, 56 pts, 34-pt threshold — no specific ratio names ── -->
   <div class="score-summary">
-    <div class="ss-main">8 weighted metrics &nbsp;&middot;&nbsp; 45-point maximum &nbsp;&middot;&nbsp; 25-point eligibility threshold</div>
+    <div class="ss-main">10 weighted metrics &nbsp;&middot;&nbsp; 56-point maximum &nbsp;&middot;&nbsp; 34-point eligibility threshold</div>
     <div class="ss-sub">Specific ratio formulas, benchmarks, and point allocations are proprietary to SmartRisk Credit</div>
   </div>
 </section>
 
-<!-- PRICING -->
+<!-- PRICING — unchanged except 10-dimension reference in Starter card -->
 <section class="sec sec-cream" id="pricing">
   <div class="sec-c">
     <div class="sec-ey">Pricing</div>
@@ -696,7 +708,8 @@
       <div class="ptier">Starter</div>
       <div class="ptarget">Designed for boutique asset managers and independent credit analysts running occasional assessments.</div>
       <div class="pfeat"><div class="pcheck">&#10003;</div>AI figure extraction</div>
-      <div class="pfeat"><div class="pcheck">&#10003;</div>8-dimension scoring engine</div>
+      <!-- ── UPDATED: 10-dimension ── -->
+      <div class="pfeat"><div class="pcheck">&#10003;</div>10-dimension scoring engine</div>
       <div class="pfeat"><div class="pcheck">&#10003;</div>PDF report download</div>
       <div class="pfeat"><div class="pcheck">&#10003;</div>Assessment history log</div>
       <button class="pbtn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact for pricing</button>
@@ -755,44 +768,31 @@
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  /* ── Hamburger toggle ── */
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script>
   function toggleNav() {
     var btn  = document.getElementById('hamburger-btn');
     var menu = document.getElementById('mobile-nav');
     var open = menu.classList.contains('open');
-    if (open) {
-      menu.classList.remove('open');
-      btn.classList.remove('open');
-    } else {
-      menu.classList.add('open');
-      btn.classList.add('open');
-    }
+    if (open) { menu.classList.remove('open'); btn.classList.remove('open'); }
+    else       { menu.classList.add('open');   btn.classList.add('open'); }
   }
-
   function closeNav() {
     document.getElementById('mobile-nav').classList.remove('open');
     document.getElementById('hamburger-btn').classList.remove('open');
   }
-
-  /* Close drawer when any nav link is tapped (smooth scroll handles the rest) */
   document.querySelectorAll('.mobile-nav-link').forEach(function(link) {
-    link.addEventListener('click', function() {
-      setTimeout(closeNav, 80);
-    });
+    link.addEventListener('click', function() { setTimeout(closeNav, 80); });
   });
-
 </script>
 
 <script data-cfasync="false">
-
-  /* ── Modal helpers ── */
   function openModal(id) {
     document.getElementById(id).classList.add('open');
     document.body.style.overflow = 'hidden';
   }
   function closeModal(e, id) {
-    // Only close if clicking the dark overlay itself, not the box
     if (e.target === document.getElementById(id)) {
       document.getElementById(id).classList.remove('open');
       document.body.style.overflow = '';
@@ -807,20 +807,16 @@
     }
   });
 
-  /* ── CTA form — calls Cloudflare Worker proxy to avoid CORS ── */
   function handleCTA() {
     var email = document.getElementById('cta-email').value.trim();
     var msg   = document.getElementById('cta-msg');
-
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       msg.style.color = '#f09595';
       msg.textContent = 'Please enter a valid work email address.';
       return;
     }
-
     msg.style.color = 'rgba(255,255,255,0.5)';
     msg.textContent = 'Submitting...';
-
     fetch('https://ml-proxy.smartrisksheets.workers.dev/subscribe', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -837,12 +833,10 @@
       msg.textContent = 'Something went wrong. Please email info@smartrisksheets.com directly.';
     });
   }
-
   document.getElementById('cta-email').addEventListener('keydown', function(e) {
     if (e.key === 'Enter') handleCTA();
   });
 </script>
-
 
 <!-- PRIVACY MODAL -->
 <div class="modal-overlay" id="privacy-modal" onclick="closeModal(event, 'privacy-modal')">
@@ -850,62 +844,48 @@
     <button class="modal-close" onclick="document.getElementById('privacy-modal').classList.remove('open')">&times;</button>
     <h2>Privacy Policy</h2>
     <div class="modal-date">Last updated: April 2026</div>
-
     <h3>1. Who we are</h3>
     <p>SmartRisk Credit is a product of SmartRisk Sheets Technologies Limited. This policy explains how we handle information collected through <strong>creditscore.smartrisksheets.com</strong>.</p>
-
     <h3>2. Information we collect</h3>
     <p>We collect only your work email address when you submit the "Request Access" form on this page. We do not collect names, payment details, or any other personal data through this landing page.</p>
-
     <h3>3. How we use your email</h3>
     <ul>
       <li>To add you to our Waitlist group on MailerLite</li>
       <li>To send you product updates and early access notifications</li>
       <li>We will never sell, rent, or share your email with third parties</li>
     </ul>
-
     <h3>4. Email marketing</h3>
     <p>By submitting your email you agree to receive occasional updates about SmartRisk Credit. Every email includes an unsubscribe link. You can opt out at any time.</p>
-
     <h3>5. Data storage</h3>
     <p>Your email is stored securely on MailerLite's platform. MailerLite is GDPR-compliant. For their privacy policy visit <a href="https://www.mailerlite.com/legal/privacy-policy" target="_blank" style="color:var(--em)">mailerlite.com</a>.</p>
-
     <h3>6. Cookies</h3>
     <p>This landing page does not use tracking cookies or analytics scripts.</p>
-
     <h3>7. Contact</h3>
     <p>For any privacy-related questions email us at <a href="mailto:info@smartrisksheets.com" style="color:var(--em)">info@smartrisksheets.com</a>.</p>
   </div>
 </div>
 
-<!-- TERMS MODAL -->
+<!-- TERMS MODAL — OpenAI/GPT-4o reference removed -->
 <div class="modal-overlay" id="terms-modal" onclick="closeModal(event, 'terms-modal')">
   <div class="modal-box">
     <button class="modal-close" onclick="document.getElementById('terms-modal').classList.remove('open')">&times;</button>
     <h2>Terms of Use</h2>
     <div class="modal-date">Last updated: April 2026</div>
-
     <h3>1. Acceptance</h3>
     <p>By accessing SmartRisk Credit you agree to these terms. If you do not agree, please do not use the service.</p>
-
     <h3>2. What SmartRisk Credit is</h3>
     <p>SmartRisk Credit is an AI-assisted quantitative credit risk scoring tool designed for Nigerian capital markets professionals. It is intended to support — not replace — professional credit analysis and judgment.</p>
-
     <h3>3. Not financial advice</h3>
     <p>All scores, ratios, narratives, and PDF reports generated by SmartRisk Credit are for informational purposes only. They do not constitute financial advice, investment recommendations, or a substitute for regulated credit analysis. SmartRisk Sheets Technologies Limited accepts no liability for decisions made on the basis of outputs from this tool.</p>
-
     <h3>4. Data you upload</h3>
-    <p>Financial statement PDFs and other documents you upload are processed by AI (OpenAI GPT-4o) solely for the purpose of extracting financial figures. We do not store uploaded documents beyond the duration of a single session.</p>
-
+    <!-- ── UPDATED: removed OpenAI/GPT-4o, generic AI reference only ── -->
+    <p>Financial statement PDFs and other documents you upload are processed by AI solely for the purpose of extracting financial figures. We do not store uploaded documents beyond the duration of a single session.</p>
     <h3>5. Intellectual property</h3>
     <p>The SmartRisk Credit scoring model, benchmarks, weighting methodology, and report templates are proprietary to SmartRisk Sheets Technologies Limited. You may not reproduce, reverse-engineer, or redistribute any part of the scoring engine.</p>
-
     <h3>6. Availability</h3>
     <p>We do not guarantee uninterrupted availability of the service. The tool may be updated, modified, or taken offline at any time without notice.</p>
-
     <h3>7. Governing law</h3>
     <p>These terms are governed by the laws of the Federal Republic of Nigeria.</p>
-
     <h3>8. Contact</h3>
     <p>Questions about these terms? Email <a href="mailto:info@smartrisksheets.com" style="color:var(--em)">info@smartrisksheets.com</a>.</p>
   </div>
