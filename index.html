@@ -316,15 +316,12 @@
     .ss-sub { color: rgba(255,255,255,0.38); font-size: 12px; }
 
     /* ── PRICING ── */
-    .pricing-intro {
-      background: #e8f7f3; border: 1px solid #b2e8d8;
-      border-radius: 14px; padding: 22px 32px;
-      max-width: 640px; margin: 0 auto 44px; text-align: center;
-    }
-    .pi-main { color: var(--navy); font-size: 19px; font-weight: 700; margin-bottom: 7px; }
-    .pi-sub { color: var(--muted); font-size: 13px; line-height: 1.7; }
-    .pi-note { color: #065f46; font-size: 11px; margin-top: 8px; font-style: italic; }
-    .pgrid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; max-width: 880px; margin: 0 auto; }
+    .pgrid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; max-width: 1100px; margin: 0 auto; }
+    @media (max-width: 900px) { .pgrid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 520px) { .pgrid { grid-template-columns: 1fr; } }
+    .pprice { font-size: 26px; font-weight: 800; color: var(--navy); margin-bottom: 2px; line-height: 1; }
+    .pprice span { font-size: 13px; font-weight: 400; color: var(--muted); }
+    .pquota { font-size: 11px; color: var(--em); font-weight: 700; margin-bottom: 14px; }
     .pcard {
       background: #fff; border-radius: 16px;
       border: 1px solid var(--border); padding: 28px 24px;
@@ -752,48 +749,72 @@
 <section class="sec sec-cream" id="pricing">
   <div class="sec-c">
     <div class="sec-ey">Pricing</div>
-    <h2 class="sec-h2">Transparent value. Flexible plans.</h2>
-    <p class="sec-sub">Plans are structured around assessment volume and designed to protect your margin through token-restricted tiers. Pay only for what you need.</p>
-  </div>
-  <div class="pricing-intro">
-    <div class="pi-main">Plans start from as low as &#8358;35,000 / month, billed annually</div>
-    <div class="pi-sub">Each plan includes a fixed monthly assessment quota. Overage assessments are available at a per-report rate to keep your costs predictable.</div>
-    <div class="pi-note">All plans are token-restricted to maintain performance and service quality across all users.</div>
+    <h2 class="sec-h2">Simple, transparent pricing.</h2>
+    <p class="sec-sub">Pay only for what you use. Start free, upgrade when you need more volume. All plans include the full 10-ratio scoring engine and AI-generated PDF reports.</p>
   </div>
   <div class="pgrid">
+
+    <!-- FREE -->
+    <div class="pcard">
+      <div class="ptier">Free</div>
+      <div class="pprice">&#8358;0 <span>/ month</span></div>
+      <div class="pquota">3 assessments / month</div>
+      <div class="ptarget">Try the platform. No credit card required.</div>
+      <div class="pfeat"><div class="pcheck">&#10003;</div>AI figure extraction from PDFs</div>
+      <div class="pfeat"><div class="pcheck">&#10003;</div>10-ratio scoring engine</div>
+      <div class="pfeat"><div class="pcheck">&#10003;</div>AI risk narrative</div>
+      <div class="pfeat"><div class="pcheck">&#10003;</div>PDF report download</div>
+      <button class="pbtn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Request Access</button>
+    </div>
+
+    <!-- STARTER -->
     <div class="pcard">
       <div class="ptier">Starter</div>
-      <div class="ptarget">Designed for boutique asset managers and independent credit analysts running occasional assessments.</div>
-      <div class="pfeat"><div class="pcheck">&#10003;</div>AI figure extraction</div>
-      <!-- ── UPDATED: 10-dimension ── -->
-      <div class="pfeat"><div class="pcheck">&#10003;</div>10-dimension scoring engine</div>
-      <div class="pfeat"><div class="pcheck">&#10003;</div>PDF report download</div>
-      <div class="pfeat"><div class="pcheck">&#10003;</div>Assessment history log</div>
-      <button class="pbtn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact for pricing</button>
-      <div class="poverage">Overage available per report</div>
+      <div class="pprice">&#8358;35,000 <span>/ month</span></div>
+      <div class="pquota">10 assessments / month</div>
+      <div class="ptarget">For independent analysts and boutique fund managers.</div>
+      <div class="pfeat"><div class="pcheck">&#10003;</div>Everything in Free</div>
+      <div class="pfeat"><div class="pcheck">&#10003;</div>Rating report extraction</div>
+      <div class="pfeat"><div class="pcheck">&#10003;</div>CP indicative terms extraction</div>
+      <div class="pfeat"><div class="pcheck">&#10003;</div>Preview &amp; edit AI narrative</div>
+      <button class="pbtn" onclick="window.open('https://paystack.com/pay/PLACEHOLDER_STARTER','_blank')">Subscribe — &#8358;35k/mo</button>
+      <div class="poverage">Access code sent within 24hrs of payment</div>
     </div>
+
+    <!-- PROFESSIONAL -->
     <div class="pcard feat">
       <div class="pbadge">Most popular</div>
       <div class="ptier">Professional</div>
-      <div class="ptarget">Ideal for active fund managers and issuing houses evaluating multiple CP programmes monthly.</div>
+      <div class="pprice">&#8358;85,000 <span>/ month</span></div>
+      <div class="pquota">30 assessments / month</div>
+      <div class="ptarget">For active fund managers and issuing houses running multiple CP programmes.</div>
       <div class="pfeat"><div class="pcheck">&#10003;</div>Everything in Starter</div>
-      <div class="pfeat"><div class="pcheck">&#10003;</div>Preview &amp; edit AI narrative</div>
-      <div class="pfeat"><div class="pcheck">&#10003;</div>Rating report extraction</div>
       <div class="pfeat"><div class="pcheck">&#10003;</div>Priority email support</div>
-      <button class="pbtn feat" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact for pricing</button>
-      <div class="poverage">Overage available per report</div>
+      <div class="pfeat"><div class="pcheck">&#10003;</div>Assessment history log</div>
+      <div class="pfeat"><div class="pcheck">&#10003;</div>Early access to new features</div>
+      <button class="pbtn feat" onclick="window.open('https://paystack.com/pay/PLACEHOLDER_PROFESSIONAL','_blank')">Subscribe — &#8358;85k/mo</button>
+      <div class="poverage">Access code sent within 24hrs of payment</div>
     </div>
+
+    <!-- ENTERPRISE -->
     <div class="pcard">
       <div class="ptier">Enterprise</div>
-      <div class="ptarget">For institutions running high-volume assessments — large PFAs, investment banks, and multi-team risk operations.</div>
+      <div class="pprice" style="font-size:18px;padding-top:4px;">Contact for pricing</div>
+      <div class="pquota">Unlimited assessments</div>
+      <div class="ptarget">For PFAs, investment banks, and multi-team risk operations.</div>
       <div class="pfeat"><div class="pcheck">&#10003;</div>Everything in Professional</div>
       <div class="pfeat"><div class="pcheck">&#10003;</div>Custom branded reports</div>
       <div class="pfeat"><div class="pcheck">&#10003;</div>Dedicated onboarding</div>
       <div class="pfeat"><div class="pcheck">&#10003;</div>SLA + full audit trail</div>
-      <button class="pbtn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact for pricing</button>
-      <div class="poverage">Unlimited overage available</div>
+      <button class="pbtn" onclick="window.location.href='mailto:info@smartrisksheets.com?subject=SmartRisk%20Credit%20%E2%80%94%20Enterprise%20Enquiry'">Get in touch</button>
     </div>
+
   </div>
+
+  <p style="text-align:center;font-size:12px;color:#aaa;margin-top:28px;line-height:1.7;">
+    Payments processed securely via Paystack. Subscription is monthly and can be cancelled at any time.<br>
+    Questions? Email <a href="mailto:info@smartrisksheets.com" style="color:#01b88e;">info@smartrisksheets.com</a>
+  </p>
 </section>
 
 <!-- Hidden iframe — catches the MailerLite form POST silently -->
