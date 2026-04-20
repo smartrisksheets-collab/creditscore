@@ -807,6 +807,11 @@
     <input class="cta-in" type="email" placeholder="Enter your work email" id="cta-email">
     <button class="btn-primary" onclick="handleCTA()">Request Access</button>
   </div>
+  <p style="font-size:11px;color:rgba(255,255,255,0.28);margin-top:10px;max-width:440px;margin-left:auto;margin-right:auto;line-height:1.6;">
+    By submitting, you consent to receiving product updates from SmartRisk Sheets Technologies Limited.
+    Lawful basis: consent. Your email will not be shared with third parties.
+    You may withdraw consent at any time via <a href="mailto:support@smartrisksheets.com" style="color:rgba(255,255,255,0.45);text-decoration:underline;">support@smartrisksheets.com</a>.
+  </p>
   <div id="cta-msg" style="margin-top:14px;font-size:13px;color:rgba(255,255,255,0.5);min-height:20px;"></div>
 </section>
 
@@ -816,7 +821,8 @@
   <div class="fright">
     <a class="flink" href="#" onclick="openModal('privacy-modal');return false;">Privacy</a>
     <a class="flink" href="#" onclick="openModal('terms-modal');return false;">Terms</a>
-    <a class="flink" href="/cdn-cgi/l/email-protection#e1888f878ea1928c8093959388928a928984849592cf828e8c">Contact</a>
+    <a class="flink" href="#" onclick="openModal('legal-modal');return false;">Legal Notice</a>
+    <a class="flink" href="mailto:info@smartrisksheets.com">Contact</a>
     <a class="li-btn" href="https://www.linkedin.com/company/smartrisksheets/" target="_blank" rel="noopener" title="SmartRisk Sheets on LinkedIn">
       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
@@ -913,12 +919,16 @@
     </ul>
     <h3>4. Email marketing</h3>
     <p>By submitting your email you agree to receive occasional updates about SmartRisk Credit. Every email includes an unsubscribe link. You can opt out at any time.</p>
-    <h3>5. Data storage</h3>
-    <p>Your email is stored securely on MailerLite's platform. MailerLite is GDPR-compliant. For their privacy policy visit <a href="https://www.mailerlite.com/legal/privacy-policy" target="_blank" style="color:var(--em)">mailerlite.com</a>.</p>
-    <h3>6. Cookies</h3>
-    <p>This landing page does not use tracking cookies or analytics scripts.</p>
-    <h3>7. Contact</h3>
-    <p>For any privacy-related questions email us at <a href="mailto:info@smartrisksheets.com" style="color:var(--em)">info@smartrisksheets.com</a>.</p>
+    <h3>5. Data storage &amp; retention</h3>
+    <p>Your email is stored securely on MailerLite's platform. MailerLite is GDPR-compliant. For their privacy policy visit <a href="https://www.mailerlite.com/legal/privacy-policy" target="_blank" style="color:var(--em)">mailerlite.com</a>. We retain your email on our mailing list until you unsubscribe or request deletion.</p>
+    <h3>6. Your rights</h3>
+    <p>You have the right to access, correct, or request deletion of your personal data at any time. To exercise any of these rights, email <a href="mailto:support@smartrisksheets.com" style="color:var(--em)">support@smartrisksheets.com</a> with the subject line "Data Request." We will respond within 10 working days.</p>
+    <h3>7. Lawful basis</h3>
+    <p>We process your email address on the basis of your consent, given when you submit the Request Access form. You may withdraw consent at any time by unsubscribing or emailing us.</p>
+    <h3>8. Cookies</h3>
+    <p>This landing page does not use tracking or advertising cookies. We use only essential session cookies on the SmartRisk Credit app to keep you securely signed in.</p>
+    <h3>9. Contact</h3>
+    <p>For general privacy questions email <a href="mailto:info@smartrisksheets.com" style="color:var(--em)">info@smartrisksheets.com</a>. For data deletion or complaints email <a href="mailto:support@smartrisksheets.com" style="color:var(--em)">support@smartrisksheets.com</a>.</p>
   </div>
 </div>
 
@@ -937,14 +947,51 @@
     <h3>4. Data you upload</h3>
     <!-- ── UPDATED: removed OpenAI/GPT-4o, generic AI reference only ── -->
     <p>Financial statement PDFs and other documents you upload are processed by AI solely for the purpose of extracting financial figures. We do not store uploaded documents beyond the duration of a single session.</p>
-    <h3>5. Intellectual property</h3>
+    <h3>5. Intellectual property &amp; content ownership</h3>
     <p>The SmartRisk Credit scoring model, benchmarks, weighting methodology, and report templates are proprietary to SmartRisk Sheets Technologies Limited. You may not reproduce, reverse-engineer, or redistribute any part of the scoring engine.</p>
-    <h3>6. Availability</h3>
+    <p>Reports generated by the tool belong to the user or their organisation. Uploaded financial documents are processed solely to extract figures for the assessment and are not stored beyond the active session. SmartRisk Sheets Technologies Limited claims no ownership over uploaded financial data or generated reports.</p>
+    <h3>6. Dispute resolution</h3>
+    <p>If you have a complaint or dispute relating to this service, please contact us in the first instance at <a href="mailto:support@smartrisksheets.com" style="color:var(--em)">support@smartrisksheets.com</a>. We will acknowledge your complaint within 5 working days and aim to resolve it within 30 days. If your complaint is not resolved to your satisfaction, you may escalate to the appropriate regulatory authority under Nigerian law.</p>
+    <h3>7. Availability</h3>
     <p>We do not guarantee uninterrupted availability of the service. The tool may be updated, modified, or taken offline at any time without notice.</p>
     <h3>7. Governing law</h3>
     <p>These terms are governed by the laws of the Federal Republic of Nigeria.</p>
     <h3>8. Contact</h3>
     <p>Questions about these terms? Email <a href="mailto:info@smartrisksheets.com" style="color:var(--em)">info@smartrisksheets.com</a>.</p>
+  </div>
+</div>
+
+<!-- LEGAL NOTICE MODAL -->
+<div class="modal-overlay" id="legal-modal" onclick="closeModal(event, 'legal-modal')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="document.getElementById('legal-modal').classList.remove('open')">&times;</button>
+    <h2>Legal Notice</h2>
+    <div class="modal-date">Last updated: April 2026</div>
+
+    <h3>1. Company identity</h3>
+    <p><strong>SmartRisk Sheets Technologies Limited</strong> is the legal entity responsible for operating the SmartRisk Credit platform, including the websites at <strong>creditscore.smartrisksheets.com</strong> and <strong>score.smartrisksheets.com</strong>.</p>
+
+    <h3>2. Registered details</h3>
+    <p>SmartRisk Sheets Technologies Limited is incorporated in the Federal Republic of Nigeria. For our current registered address and company details, contact us at <a href="mailto:info@smartrisksheets.com" style="color:var(--em)">info@smartrisksheets.com</a>.</p>
+
+    <h3>3. Platform ownership</h3>
+    <p>All content on this website — including text, design, scoring methodology, report templates, and software — is owned by or licensed to SmartRisk Sheets Technologies Limited. Unauthorised reproduction or distribution is prohibited.</p>
+
+    <h3>4. User-generated content</h3>
+    <p>Financial documents uploaded by users remain the property of the user or their organisation. SmartRisk Sheets Technologies Limited does not claim ownership of any uploaded documents or generated reports. Uploaded documents are not stored beyond the active session.</p>
+
+    <h3>5. Regulatory status</h3>
+    <p>SmartRisk Credit is a technology tool providing quantitative financial analysis for internal use by capital markets professionals. It is not a licensed credit rating agency and does not provide regulated financial advice under Nigerian law.</p>
+
+    <h3>6. Complaints &amp; disputes</h3>
+    <p>To raise a complaint, email <a href="mailto:support@smartrisksheets.com" style="color:var(--em)">support@smartrisksheets.com</a> with the subject line "Formal Complaint." We will acknowledge within 5 working days and resolve within 30 days where possible.</p>
+
+    <h3>7. Governing law</h3>
+    <p>This Legal Notice and all matters relating to this platform are governed by the laws of the Federal Republic of Nigeria. Any disputes shall be subject to the jurisdiction of Nigerian courts.</p>
+
+    <h3>8. Contact</h3>
+    <p>General enquiries: <a href="mailto:info@smartrisksheets.com" style="color:var(--em)">info@smartrisksheets.com</a><br>
+    Complaints &amp; data requests: <a href="mailto:support@smartrisksheets.com" style="color:var(--em)">support@smartrisksheets.com</a></p>
   </div>
 </div>
 
