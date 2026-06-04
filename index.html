@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>SmartRisk GRC — Spreadsheets in. Risk intelligence out.</title>
-<meta name="description" content="SmartRisk GRC is a standardised intelligence layer on top of Excel and Google Sheets. Connect risks, incidents, and insights across your organisation — without replacing what works.">
+<title>SmartRisk PULSE — Spreadsheets in. Risk intelligence out.</title>
+<meta name="description" content="SmartRisk PULSE is a standardised intelligence layer on top of Excel and Google Sheets. Connect risks, incidents, and insights across your organisation — without replacing what works.">
 <link rel="icon" href="https://smartrisksheets.com/wp-content/uploads/2025/09/cropped-Smartrisksheets-favicon-v2.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -15,9 +15,9 @@
   --navy:       #0A0F24;
   --navy-light: #121A3E;
   --navy-card:  #18224B;
-  --em:         #00E5A3;
+  --em:         #01b88e;
   --em-hover:   #00C48B;
-  --em-glow:    rgba(0, 229, 163, 0.15);
+  --em-glow:    rgba(1, 184, 142, 0.15);
   --cream:      #F8FAFC;
   --white:      #FFFFFF;
   --text-dark:  #0F172A;
@@ -95,7 +95,7 @@ body {
 }
 .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 .logo-icon {
-  width: 38px; height: 38px; background: var(--em); border-radius: 10px;
+  width: 38px; height: 38px; background: transparent; border-radius: 10px;
   display: flex; align-items: center; justify-content: center; font-weight: 800; color: var(--navy); font-size: 18px;
 }
 .logo-text { color: var(--white); font-size: 16px; font-weight: 700; letter-spacing: -0.5px; }
@@ -331,6 +331,377 @@ body {
   .cta-h { font-size: 32px; }
   .footer { padding: 32px 24px; flex-direction: column; text-align: center; }
 }
+
+
+
+
+
+
+
+/* ── CRISP WHITE ATTACHMENT VARIABLES & IMPLEMENTATION ── */
+:root {
+  --bg-main:      #FAFAFA;
+  --bg-card:      #FFFFFF;
+  --border-crisp: #E2E8F0;
+  --text-main:    #0F172A;
+  --text-muted:   #64748B;
+  --navy-brand:   #1F2854;
+  --emerald-dash: #10B981;
+  --amber-dash:   #F59E0B;
+  --shadow-sm:    0 1px 3px rgba(0,0,0,0.05);
+  --shadow-md:    0 10px 25px -5px rgba(15, 23, 42, 0.05);
+  --shadow-lg:    0 20px 40px -15px rgba(15, 23, 42, 0.12);
+  --ease:         cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* ── HERO INTERACTIVE CARD MOCK CONTAINER ── */
+.hero-card {
+  background: var(--bg-main); 
+  border-radius: 20px; 
+  overflow: hidden;
+  border: 1px solid var(--border-crisp); 
+  box-shadow: var(--shadow-lg);
+  position: relative; 
+  transition: all 0.3s var(--ease);
+}
+.hcard-hd { 
+  background: #F8FAFC; 
+  padding: 18px 24px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-crisp);
+}
+.hcard-title { 
+  color: var(--navy-brand); 
+  font-size: 13px; 
+  font-weight: 700; 
+  letter-spacing: 0.05em; 
+  text-transform: uppercase; 
+}
+.hcard-sub { 
+  color: var(--text-muted); 
+  font-size: 12px; 
+  font-weight: 600; 
+}
+.hcard-tabs { 
+  display: flex; 
+  background: #F1F5F9; 
+  padding: 4px; 
+  gap: 4px; 
+}
+.hcard-tab { 
+  flex: 1; 
+  text-align: center; 
+  padding: 10px; 
+  font-size: 12px; 
+  font-weight: 600; 
+  color: var(--text-muted); 
+  cursor: pointer; 
+  border-radius: 8px; 
+  transition: all 0.2s var(--ease); 
+}
+.hcard-tab.active { 
+  background: var(--bg-card); 
+  color: var(--navy-brand); 
+  box-shadow: var(--shadow-sm); 
+}
+.hcard-body { 
+  padding: 24px; 
+  min-height: 250px;
+  background-color: var(--bg-main);
+}
+.tab-panel { 
+  display: none; 
+  animation: fadeIn 0.4s ease forwards; 
+}
+.tab-panel.active { 
+  display: block; 
+}
+
+@keyframes fadeIn { 
+  from { opacity: 0; transform: translateY(6px); } 
+  to { opacity: 1; transform: translateY(0); } 
+}
+
+/* ── INTERACTIVE WHITE DIAGRAM PIPELINE LAYOUT ── */
+.pipeline-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+}
+.step-panel {
+  flex: 1;
+  background: var(--bg-card);
+  border: 1px solid var(--border-crisp);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s var(--ease), border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+.step-panel:hover {
+  transform: translateY(-4px);
+  border-color: #CBD5E1;
+  box-shadow: var(--shadow-md);
+}
+.step-header {
+  margin-bottom: 12px;
+}
+.step-title-area {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.step-badge {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+}
+.step-badge.processing-badge {
+  color: var(--navy-brand);
+}
+.step-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--navy-brand);
+}
+
+/* ── CLUSTER FILE FORMAT FAVICONS ── */
+.favicon-cluster {
+  display: inline-flex;
+  gap: 4px;
+}
+.favicon-pill {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: 800;
+  border: 1px solid var(--border-crisp);
+  background: #F8FAFC;
+}
+.favicon-pill.xl { color: #107C41; background: #F3FBF6; border-color: #C1E7D0; }
+.favicon-pill.csv { color: #475569; background: #F1F5F9; border-color: #CBD5E1; }
+.favicon-pill.gs { color: #0F9D58; background: #EEF9F3; border-color: #C1E7D0; }
+
+/* ── INTERNAL TABLES AND MATRIX SYSTEMS ── */
+.excel-table-wrap {
+  border: 1px solid var(--border-crisp);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.excel-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+}
+.excel-table th {
+  background-color: #F1F5F9;
+  color: var(--text-muted);
+  font-weight: 600;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border-crisp);
+}
+.excel-table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border-crisp);
+  color: #334155;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.excel-table tr:last-child td {
+  border-bottom: none;
+}
+.risk-id-cell {
+  font-weight: 600;
+  color: var(--navy-brand);
+}
+
+/* ── PROCESSING ENGINE INFRASTRUCTURE ── */
+.step-panel.tier-center {
+  border-color: #CBD5E1;
+}
+.engine-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.engine-node {
+  background: #F8FAFC;
+  border: 1px solid var(--border-crisp);
+  border-radius: 8px;
+  padding: 10px 4px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  transition: all 0.3s var(--ease);
+}
+.engine-node:hover {
+  transform: scale(1.05);
+  border-color: var(--navy-brand);
+  background: var(--bg-card);
+}
+.node-icon-wrap {
+  color: var(--text-muted);
+  display: inline-flex;
+}
+.engine-node:hover .node-icon-wrap {
+  color: var(--navy-brand);
+}
+.node-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--navy-brand);
+}
+
+/* ── INTELLIGENCE DATA COMPONENT LAYOUTS ── */
+.dash-mini-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+.dash-card-embedded {
+  border: 1px solid var(--border-crisp);
+  border-radius: 8px;
+  padding: 10px;
+  background: var(--bg-card);
+}
+.dash-lbl {
+  font-size: 8px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+.dash-gauge-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Animated Micro Canvas Circle Gauge */
+@property --gauge-pct {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 74%;
+}
+.dash-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: conic-gradient(var(--emerald-dash) var(--gauge-pct), #E2E8F0 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: --gauge-pct 0.4s var(--ease);
+}
+.step-panel:hover .dash-circle {
+  --gauge-pct: 85%;
+}
+.dash-circle-inner {
+  width: 24px;
+  height: 24px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 800;
+}
+.score-counter::after {
+  content: "74";
+}
+.step-panel:hover .score-counter::after {
+  content: "85";
+}
+.dash-status-txt {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--emerald-dash);
+}
+.dash-metric-big {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--navy-brand);
+  line-height: 1.1;
+}
+.text-amber {
+  color: var(--amber-dash);
+}
+.dash-insight-block {
+  background: #F8FAFC;
+  border-left: 3px solid var(--navy-brand);
+  padding: 6px 8px;
+  font-size: 10px;
+  color: #334155;
+  line-height: 1.4;
+  border-radius: 0 4px 4px 0;
+}
+
+/* ── CONNECTING VECTOR STREAM LINE ARROWS ── */
+.pipeline-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+}
+.arrow-line {
+  width: 24px;
+  height: 2px;
+  background: var(--border-crisp);
+  position: relative;
+}
+.arrow-line::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: -3px;
+  width: 0;
+  height: 0;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-left: 5px solid var(--border-crisp);
+}
+.hero-card:hover .arrow-line {
+  background: repeating-linear-gradient(90deg, var(--navy-brand) 0px, var(--navy-brand) 2px, transparent 2px, transparent 4px);
+  animation: march 0.6s linear infinite;
+}
+@keyframes march {
+  0% { background-position: 0px; }
+  100% { background-position: 4px; }
+}
+
+/* Responsive Structural Inversion Rules */
+@media (max-width: 768px) {
+  .pipeline-container {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .pipeline-arrow {
+    transform: rotate(90deg);
+    padding: 2px 0;
+  }
+  .step-panel {
+    width: 100%;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -338,8 +709,10 @@ body {
 <!-- ── HEADER NAVIGATION ── -->
 <nav class="nav">
   <a href="#" class="nav-logo">
-    <div class="logo-icon">S</div>
-    <div class="logo-text">SmartRisk <span>GRC</span><small>Enterprise</small></div>
+<div class="logo-icon">
+    <img src="https://smartrisksheets.com/wp-content/uploads/2025/09/cropped-Smartrisksheets-favicon-v2.png" alt="Smartrisksheets Logo" width="32" height="32">
+</div>
+    <div class="logo-text">SmartRisk <span>PULSE</span><small>by SmartRisk Sheets</small></div>
   </a>
   <div class="nav-links">
     <a href="#problem" class="nav-link">The Challenge</a>
@@ -347,7 +720,7 @@ body {
     <a href="#modules" class="nav-link">Modules</a>
     <a href="#engine" class="nav-link">Risk Engine</a>
     <a href="#compare" class="nav-link">Value Matrix</a>
-    <a href="https://smartrisksheets.com/demo" class="btn btn-p">Request Enterprise Demo</a>
+    <a href="https://smartrisksheets.com/demo" class="btn btn-p">Activate Risk Intelligence</a>
   </div>
   <button class="hamburger" id="menuToggle" aria-label="Toggle Menu">
     <span></span><span></span><span></span>
@@ -372,112 +745,208 @@ body {
       OPERATIONAL RISK INTELLIGENCE
     </div>
     <h1>Spreadsheets in.<br>Risk intelligence <em>out.</em></h1>
-    <p class="hero-sub">SmartRisk Pulse is the intelligence layer between spreadsheets and full GRC suites. Know your risks before they become incidents. Manage incidents before they become headlines. All without replacing what works.</p>
+    <p class="hero-sub">Connect your existing risk register and turn static risk data into live intelligence—without replacing spreadsheets or deploying a GRC platform.</p>
     
     <div class="hero-btns">
-      <a href="https://smartrisksheets.com/demo" class="btn btn-p">Free Trial</a>
+      <a href="https://smartrisksheets.com/demo" class="btn btn-p">Start Free Trial</a>
       <a href="#architecture" class="btn btn-g">
-        <span>How it Works</span>
+        <span>See How it Works</span>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
       </a>
     </div>
 
     <div class="hero-stats">
       <div class="hstat">
-        <div class="hstat-v">Risk Module</div>
-        <div class="hstat-l">Live Now</div>
+        <div class="hstat-v">Live in Minutes</div>
+        <div class="hstat-l">Not Months</div>
       </div>
       <div class="hstat">
-        <div class="hstat-v">&lt; 5 Mins</div>
-        <div class="hstat-l">Setup Window</div>
+        <div class="hstat-v">&lt; 15 Mins</div>
+        <div class="hstat-l">AVG Setup Time</div>
       </div>
       <div class="hstat">
-        <div class="hstat-v">0%</div>
-        <div class="hstat-l">Workflow Disruption</div>
+        <div class="hstat-v">0 Process Change</div>
+        <div class="hstat-l">Upload Register</div>
       </div>
     </div>
   </div>
 
   <!-- INTERACTIVE LIVE METRICS GRAPH MOCKUP -->
   <div class="hero-card">
-    <div class="hcard-hd">
-      <div class="hcard-title">Live Node Pipeline</div>
-      <div class="hcard-sub">Active Mapping Engine</div>
-    </div>
-    <div class="hcard-tabs">
-      <div class="hcard-tab active" data-tab="ops">Operations</div>
-      <div class="hcard-tab" data-tab="fin">Financial</div>
-      <div class="hcard-tab" data-tab="cyber">Cyber Security</div>
-    </div>
-    <div class="hcard-body">
-      <!-- Panel 1 -->
-      <div class="tab-panel active" id="panel-ops">
-        <div class="hcard-row">
-          <div class="hcard-ico">📊</div>
-          <div>
-            <div class="hcard-name">Logistics Risk Log.xlsx</div>
-            <div class="hcard-desc">Updated 3m ago via Supply Chain Hub</div>
+  <div class="hcard-hd">
+    <div class="hcard-title">Live Data Pipeline</div>
+    <div class="hcard-sub">Active SmartRisk Engine</div>
+  </div>
+  
+  <div class="hcard-tabs">
+    <div class="hcard-tab active" data-tab="ops">Operations</div>
+    <div class="hcard-tab" data-tab="fin">Financial</div>
+    <div class="hcard-tab" data-tab="cyber">Cyber Security</div>
+  </div>
+
+  <div class="hcard-body">
+    <div class="tab-panel active" id="panel-ops">
+      <div class="pipeline-container">
+        <div class="step-panel">
+          <div class="step-header">
+            <span class="step-badge">Before</span>
+            <div class="step-title-area">
+              <h3 class="step-title">Excel Registers</h3>
+              <div class="favicon-cluster">
+                <div class="favicon-pill xl" title="Microsoft Excel">X</div>
+                <div class="favicon-pill csv" title="CSV Format">C</div>
+              </div>
+            </div>
           </div>
-          <div class="hcard-status connected">Connected</div>
+          <div class="excel-table-wrap">
+            <table class="excel-table">
+              <thead>
+                <tr>
+                  <th>Risk ID</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="risk-id-cell">R-006</td>
+                  <td>Logistics Risk Log</td>
+                </tr>
+                <tr>
+                  <td class="risk-id-cell">R-007</td>
+                  <td>Vendor Assessments</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-        <div class="hcard-row">
-          <div class="hcard-ico">📈</div>
-          <div>
-            <div class="hcard-name">Vendor Assessments.sheet</div>
-            <div class="hcard-desc">Updated 14m ago via Vendor Portal</div>
+
+        <div class="pipeline-arrow"><div class="arrow-line"></div></div>
+
+        <div class="step-panel tier-center">
+          <div class="step-header">
+            <span class="step-badge processing-badge">AI Layer</span>
+            <h3 class="step-title">SmartRisk Engine</h3>
           </div>
-          <div class="hcard-status connected">Connected</div>
+          <div class="engine-grid">
+            <div class="engine-node">
+              <div class="node-icon-wrap"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.364l-.707-.707M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/></svg></div>
+              <div class="node-label">AI</div>
+            </div>
+            <div class="engine-node">
+              <div class="node-icon-wrap"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></div>
+              <div class="node-label">Monitor</div>
+            </div>
+          </div>
         </div>
-        <div class="hcard-row">
-          <div class="hcard-ico">📄</div>
-          <div>
-            <div class="hcard-name">Incident Registry Q3.xlsx</div>
-            <div class="hcard-desc">Awaiting scheduled cron upload</div>
+
+        <div class="pipeline-arrow"><div class="arrow-line"></div></div>
+
+        <div class="step-panel">
+          <div class="step-header">
+            <span class="step-badge">After</span>
+            <h3 class="step-title">Intelligence</h3>
           </div>
-          <div class="hcard-status pending">Pending Sync</div>
+          <div class="dash-mini-grid">
+            <div class="dash-card-embedded">
+              <div class="dash-lbl">Risk Health</div>
+              <div class="dash-gauge-box">
+                <div class="dash-circle">
+                  <div class="dash-circle-inner"><span class="score-counter"></span></div>
+                </div>
+                <div class="dash-status-txt">Healthy</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <!-- Panel 2 -->
-      <div class="tab-panel" id="panel-fin">
-        <div class="hcard-row">
-          <div class="hcard-ico">💵</div>
-          <div>
-            <div class="hcard-name">FX Leverage Exposure.xlsx</div>
-            <div class="hcard-desc">Updated 1m ago via Treasury Desk</div>
+    </div>
+
+    <div class="tab-panel" id="panel-fin">
+      <div class="pipeline-container">
+        <div class="step-panel">
+          <div class="step-header">
+            <span class="step-badge">Before</span>
+            <div class="step-title-area">
+              <h3 class="step-title">Treasury</h3>
+              <div class="favicon-cluster"><div class="favicon-pill xl">X</div></div>
+            </div>
           </div>
-          <div class="hcard-status connected">Connected</div>
+          <div class="excel-table-wrap">
+            <table class="excel-table">
+              <thead><tr><th>Risk ID</th><th>Description</th></tr></thead>
+              <tbody><tr><td class="risk-id-cell">R-011</td><td>FX Leverage Exposure</td></tr></tbody>
+            </table>
+          </div>
         </div>
-        <div class="hcard-row">
-          <div class="hcard-ico">🏦</div>
-          <div>
-            <div class="hcard-name">Credit Risk Forecast.sheet</div>
-            <div class="hcard-desc">Automated macro pipeline update</div>
+        <div class="pipeline-arrow"><div class="arrow-line"></div></div>
+        <div class="step-panel tier-center">
+          <div class="step-header"><span class="step-badge processing-badge">AI Layer</span><h3 class="step-title">SmartRisk Engine</h3></div>
+          <div class="engine-grid">
+            <div class="engine-node"><div class="node-icon-wrap"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div><div class="node-label">Realtime</div></div>
+            <div class="engine-node"><div class="node-icon-wrap"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg></div><div class="node-label">Metrics</div></div>
           </div>
-          <div class="hcard-status connected">Connected</div>
+        </div>
+        <div class="pipeline-arrow"><div class="arrow-line"></div></div>
+        <div class="step-panel">
+          <div class="step-header"><span class="step-badge">After</span><h3 class="step-title">Intelligence</h3></div>
+          <div class="dash-mini-grid">
+            <div class="dash-card-embedded">
+              <div class="dash-lbl">Exposure</div>
+              <div class="dash-metric-big text-amber">34%</div>
+            </div>
+          </div>
         </div>
       </div>
-      <!-- Panel 3 -->
-      <div class="tab-panel" id="panel-cyber">
-        <div class="hcard-row">
-          <div class="hcard-ico">🛡️</div>
-          <div>
-            <div class="hcard-name">ISO27001 Compliance Tracker</div>
-            <div class="hcard-desc">Security posture matrix sync</div>
+    </div>
+
+    <div class="tab-panel" id="panel-cyber">
+      <div class="pipeline-container">
+        <div class="step-panel">
+          <div class="step-header">
+            <span class="step-badge">Before</span>
+            <div class="step-title-area">
+              <h3 class="step-title">Compliance</h3>
+              <div class="favicon-cluster"><div class="favicon-pill gs">S</div></div>
+            </div>
           </div>
-          <div class="hcard-status connected">Connected</div>
+          <div class="excel-table-wrap">
+            <table class="excel-table">
+              <thead><tr><th>Standard</th><th>Status</th></tr></thead>
+              <tbody><tr><td class="risk-id-cell">ISO27001</td><td>Posture Sync</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="pipeline-arrow"><div class="arrow-line"></div></div>
+        <div class="step-panel tier-center">
+          <div class="step-header"><span class="step-badge processing-badge">AI Layer</span><h3 class="step-title">SmartRisk Engine</h3></div>
+          <div class="engine-grid">
+            <div class="engine-node"><div class="node-icon-wrap"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="node-label">Posture</div></div>
+            <div class="engine-node"><div class="node-icon-wrap"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div><div class="node-label">Threats</div></div>
+          </div>
+        </div>
+        <div class="pipeline-arrow"><div class="arrow-line"></div></div>
+        <div class="step-panel">
+          <div class="step-header"><span class="step-badge">After</span><h3 class="step-title">Intelligence</h3></div>
+          <div class="dash-mini-grid">
+            <div class="dash-card-embedded" style="padding: 12px;">
+              <div class="dash-lbl">Executive Insights</div>
+              <div class="dash-insight-block">Operational anomalies cleared. Posture secure.</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 </header>
 
 <!-- ── CHALLENGE AREA ── -->
 <section id="problem" class="sec sec-cream">
   <div class="inner">
     <div class="section-header">
-      <div class="section-eyebrow">The Universal Friction</div>
-      <h2 class="section-h2">Traditional GRC software fails because users <em>love spreadsheets.</em></h2>
-      <p class="section-sub">Forcing non-technical department leads out of familiar spreadsheets breaks compliance tracking completely. SmartRisk leaves the front-end tool alone while modernizing the architecture behind it.</p>
+      <div class="section-eyebrow">Why Most Risk Registers Go Stale</div>
+      <h2 class="section-h2">Your risk register already exists <br><em>Make it think.</em></h2>
+      <p class="section-sub">SmartRisk Pulse web interface sits on your Excel or Sheets registers — transforming them into live risk intelligence.</p>
     </div>
 
     <div class="prob-grid">
@@ -485,22 +954,22 @@ body {
         <div class="prob-ico">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
         </div>
-        <div class="prob-title">The Version Control Abyss</div>
-        <p class="prob-body">Risk profiles decay rapidly when scattered across dozens of unlinked desktop files, local drives, and slack channels.</p>
+        <div class="prob-title">Fragmented Data</div>
+        <p class="prob-body">Risk registers in one sheet, incidents in another, and critical context everywhere. No single source of truth.</p>
       </div>
       <div class="prob-card">
         <div class="prob-ico">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
         </div>
-        <div class="prob-title">Brittle Manual Rollups</div>
-        <p class="prob-body">Risk teams waste weeks manually copy-pasting disparate metrics to build static, outdated boardroom presentations.</p>
+        <div class="prob-title">Manual & inconsistent</div>
+        <p class="prob-body">Manual updates, inconsistent scoring, and no standardised taxonomy across departments or teams.</p>
       </div>
       <div class="prob-card">
         <div class="prob-ico">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line><line x1="5" y1="9" x2="21" y2="9"></line></svg>
         </div>
-        <div class="prob-title">Rigid Legacy Alternatives</div>
-        <p class="prob-body">Heavy enterprise risk apps demand complex custom builds and disruptive internal tooling rollouts that staff reject.</p>
+        <div class="prob-title">No connected insights</div>
+        <p class="prob-body">Impossible to see how risks and incidents are related or where organisational exposure is actually growing.</p>
       </div>
     </div>
   </div>
@@ -511,22 +980,22 @@ body {
   <div class="inner">
     <div class="sol-grid">
       <div>
-        <div class="section-eyebrow">SmartRisk Strategy Stack</div>
-        <h2 class="section-h2">Unified normalization engine without manual <em>data migration.</em></h2>
-        <p class="section-sub">SmartRisk operates as an overlay. Your teams continue managing specific, context-heavy operational assets natively in Excel or Sheets, while our engine abstracts updates instantly.</p>
+        <div class="section-eyebrow">The Solution</div>
+        <h2 class="section-h2">A standardised intelligence layer on top of <em>your existing workflow.</em></h2>
+        <p class="section-sub">Your organisation gains the visibility it never had.</p>
         
         <div class="sol-checks">
           <div class="sol-check">
             <div class="chk"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-            <span>Bi-directional real-time cloud data pipeline hooks</span>
+            <span>Standardises risk and incident data</span>
           </div>
           <div class="sol-check">
             <div class="chk"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-            <span>Automated architectural structural schema validation</span>
+            <span>Connects and correlates across your organisation</span>
           </div>
           <div class="sol-check">
             <div class="chk"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-            <span>Cryptographic end-to-end data transmission parameters</span>
+            <span>Delivers forward-looking, actionable intelligence</span>
           </div>
         </div>
       </div>
@@ -535,23 +1004,23 @@ body {
         <div class="layer">
           <div class="layer-ico">📊</div>
           <div class="layer-content">
-            <div class="layer-tag">Tier 01 // End-User Edge</div>
-            <div class="layer-title">Native Excel & Google Sheets Logs</div>
-            <div class="layer-sub">Zero change to standard departmental work fields.</div>
+            <div class="layer-tag">Intelligence</div>
+            <div class="layer-title">Insights, correlations, trends, reporting</div>
+            <div class="layer-sub">Surface patterns and emerging threats automatically.</div>
           </div>
         </div>
         <div class="layer hl">
           <div class="layer-ico">⚙️</div>
           <div class="layer-content">
-            <div class="layer-tag">Tier 02 // SmartRisk Normalization Engine</div>
-            <div class="layer-title">Standardized Intelligence Translation Matrix</div>
+            <div class="layer-tag">SmartRisk Intelligence Layer</div>
+            <div class="layer-title">Standardise, correlate, enrich, analyse</div>
             <div class="layer-sub">Extracts, maps, and calculates organizational risk indices live.</div>
           </div>
         </div>
         <div class="layer">
           <div class="layer-ico">🖥️</div>
           <div class="layer-content">
-            <div class="layer-tag">Tier 03 // Boardroom Interface</div>
+            <div class="layer-tag">Boardroom Interface</div>
             <div class="layer-title">Dynamic Real-Time Executive Reporting</div>
             <div class="layer-sub">Provides instantly auditable regulatory summaries.</div>
           </div>
@@ -565,43 +1034,47 @@ body {
 <section id="modules" class="sec sec-navy">
   <div class="inner">
     <div class="section-header">
-      <div class="section-eyebrow">Enterprise Solutions Blueprint</div>
-      <h2 class="section-h2">Architected explicitly for <em>modern scale.</em></h2>
-      <p class="section-sub">Combine distributed source data into precise specialized modules matching the operating tempo of security, ops, and audit departments.</p>
+      <div class="section-eyebrow">CONNECTED MODULES</div>
+      <h2 class="section-h2">Everything your risk team needs<em><br>One connected intelligent system.</em></h2>
+      <p class="section-sub">One register for every team. scored, owned, and monitored in real time.</p>
     </div>
 
     <div class="mod-grid">
       <div class="mod-card">
         <div class="mod-ico">🛡️</div>
-        <div class="mod-title">Enterprise Risk Log</div>
-        <div class="mod-tag">Dynamic Aggregation Module</div>
-        <p class="mod-body">Instantly compile disparate compliance sheets into a unified, clean, sortable corporate risk profile graph matrix.</p>
+        <div class="mod-title">Incident Module</div>
+        <div class="mod-tag">Track & Remediate</div>
+        <p class="mod-body">Capture incidents, root causes, and remediation in real time. Connect every incident back to its underlying risk.</p>
         <div class="mod-list">
-          <div class="mod-li"><div class="mod-ck">✓</div> Schema mapping templates</div>
-          <div class="mod-li"><div class="mod-ck">✓</div> Automated anomaly filtering</div>
+          <div class="mod-li"><div class="mod-ck">✓</div> Incident logging & Risk classification</div>
+	  <div class="mod-li"><div class="mod-ck">✓</div> Mean-time-to-resolve & Cost tracking</div>
+          <div class="mod-li"><div class="mod-ck">✓</div> Root cause & Remediation tracking</div>
         </div>
       </div>
 
       <div class="mod-card featured">
-        <div class="mod-badge">Highly Recommended</div>
+        <div class="mod-badge">Live Now</div>
         <div class="mod-ico">🚨</div>
-        <div class="mod-title">Incident Nexus</div>
-        <div class="mod-tag">Real-Time Threat Vector Correlation</div>
-        <p class="mod-body">Link field operational issues directly back to your risk profile logs to monitor exposure changes in real-time.</p>
+        <div class="mod-title">Risk Module</div>
+        <div class="mod-tag">Forward-Looking</div>
+        <p class="mod-body">Identify, assess, and prioritise future risks with a standardised register built for operational teams.</p>
         <div class="mod-list">
-          <div class="mod-li"><div class="mod-ck">✓</div> Live telemetry alerts</div>
-          <div class="mod-li"><div class="mod-ck">✓</div> Root-cause link graphs</div>
+          <div class="mod-li"><div class="mod-ck">✓</div> Risk health & Exposure visibility</div>
+          <div class="mod-li"><div class="mod-ck">✓</div> Operational intelligence feed</div>
+	  <div class="mod-li"><div class="mod-ck">✓</div> Control strength & Residual risk mgt</div>
         </div>
       </div>
 
       <div class="mod-card">
         <div class="mod-ico">🔮</div>
-        <div class="mod-title">Insight Radar</div>
-        <div class="mod-tag">Automated Executive Summarization</div>
-        <p class="mod-body">Turn row-level data cells into clear board presentations, trend timelines, and regulatory export-ready files instantly.</p>
+        <div class="mod-title">Unified Intelligence</div>
+        <div class="mod-tag">Correlate & Predict</div>
+        <p class="mod-body">Correlate risks and incidents to surface trend indicators and emerging operational threats before they escalate.</p>
         <div class="mod-list">
-          <div class="mod-li"><div class="mod-ck">✓</div> One-click PDF generation</div>
-          <div class="mod-li"><div class="mod-ck">✓</div> AI-assisted key summaries</div>
+          <div class="mod-li"><div class="mod-ck">✓</div> Risk–incident correlation engine</div>
+          <div class="mod-li"><div class="mod-ck">✓</div> Enterprise risk health & Exposure index</div>
+	   <div class="mod-li"><div class="mod-ck">✓</div> Emerging risk detection</div>
+	   <div class="mod-li"><div class="mod-ck">✓</div> Executive intelligence view</div>
         </div>
       </div>
     </div>
@@ -613,9 +1086,9 @@ body {
   <div class="inner">
     <div class="poc-grid">
       <div>
-        <div class="section-eyebrow">The SmartRisk Data Loop</div>
-        <h2 class="section-h2">Keep the frontends they know. Unlock the <em>insights you need.</em></h2>
-        <p class="section-sub">SmartRisk bridges the gap between individual team speed and systemic executive control. No formulas break, no manual updates stall, and no security permissions drop.</p>
+        <div class="section-eyebrow">The Pulse data flow</div>
+        <h2 class="section-h2">Keep the backend you have. Unlock the <em>insights you need.</em></h2>
+        <p class="section-sub">SmartRisk Pulse normalises, scores, and connects that data automatically. What arrives at the boardroom is live, structured, and decision-ready.</p>
       </div>
       
       <div class="poc-visual">
@@ -632,7 +1105,7 @@ body {
           </div>
           <div class="poc-node">
             <div class="poc-ico">🏛️</div>
-            <div class="poc-name">GRC Control</div>
+            <div class="poc-name">Governance Insights</div>
             <div class="poc-q">Boardroom Hub</div>
           </div>
         </div>
@@ -647,29 +1120,29 @@ body {
   <div class="inner">
     <div class="section-header">
       <div class="section-eyebrow">The Competitive Reality Matrix</div>
-      <h2 class="section-h2">Why standard GRC rollouts fail <em>where SmartRisk thrives.</em></h2>
+      <h2 class="section-h2">Built for the middle<br><em>Designed for impact.</em></h2>
     </div>
 
     <div class="cmp-wrap">
       <div class="cmp-head">
         <div class="cmp-hc">Operational Capability</div>
         <div class="cmp-hc">Raw Spreadsheets</div>
-        <div class="cmp-hc hl">SmartRisk Platform</div>
+        <div class="cmp-hc hl">SmartRisk Pulse</div>
       </div>
       <div class="cmp-row">
-        <div class="cmp-c attr">User Adoption Friction Rate</div>
-        <div class="cmp-c">0% (Tooling Already Exists)</div>
-        <div class="cmp-c hl">0% (Overlay Strategy Engine)</div>
+        <div class="cmp-c attr">Will your team actually use it</div>
+        <div class="cmp-c">Yes — they already do</div>
+        <div class="cmp-c hl">Yes — with an intelligence layer on top</div>
       </div>
       <div class="cmp-row">
-        <div class="cmp-c attr">Cross-Department Correlation</div>
-        <div class="cmp-c">Completely Manual / Brittle</div>
-        <div class="cmp-c hl">100% Real-time Relationship Maps</div>
+        <div class="cmp-c attr">Visibility across departments</div>
+        <div class="cmp-c">Sheets exist in silos</div>
+        <div class="cmp-c hl">Every department's risks in one live view</div>
       </div>
       <div class="cmp-row">
-        <div class="cmp-c attr">Historical Audit Logging</div>
-        <div class="cmp-c">Prone to File Overwrites</div>
-        <div class="cmp-c hl">Cryptographic Version Tracking</div>
+        <div class="cmp-c attr">Full audit trail</div>
+        <div class="cmp-c">Prone to file overwrites</div>
+        <div class="cmp-c hl">Every change timestamped and attributed</div>
       </div>
     </div>
   </div>
@@ -686,18 +1159,18 @@ body {
     <div class="steps-grid">
       <div class="scard">
         <div class="snum">01</div>
-        <div class="stitle">Map Source Nodes</div>
-        <p class="sbody">Link your existing cloud storage risk sheets (OneDrive, SharePoint, Google Workspace) via secure read tokens.</p>
+        <div class="stitle">Connect Spreadsheets</div>
+        <p class="sbody">Connect Excel,CSV,Google Sheets in minutes. No migration, no rebuild, no disruption to existing workflows.</p>
       </div>
       <div class="scard">
         <div class="snum">02</div>
-        <div class="stitle">Align Intelligence Layer</div>
-        <p class="sbody">Our schema engine normalizes risk definitions, severity weights, and structural taxonomy variables automatically.</p>
+        <div class="stitle">Map & Standardise</div>
+        <p class="sbody">Map your data to our risk and incident models. SmartRisk Pulse standardises, enriches, and begins correlating immediately.</p>
       </div>
       <div class="scard">
         <div class="snum">03</div>
-        <div class="stitle">Export Live Control</div>
-        <p class="sbody">Access unified tracking metrics, generate boardroom assets, and receive predictive threat change notifications.</p>
+        <div class="stitle">Activate intelligence</div>
+        <p class="sbody">Start seeing correlations, trends, and insights instantly. Your risk data is now a live intelligence system.</p>
       </div>
     </div>
   </div>
@@ -707,9 +1180,9 @@ body {
 <section class="cta-sec">
   <div class="cta-inner">
     <h2 class="cta-h">Stop fighting spreadsheets. Start leveraging <em>risk intelligence.</em></h2>
-    <p class="cta-s">Deploy the world's most adaptive risk aggregation layer across your organization's infrastructure in under two hours.</p>
+    <p class="cta-s">Deploy the world's most adaptive risk aggregation layer across your organization's infrastructure in under 15 mins.</p>
     <div class="cta-btns">
-      <a href="https://smartrisksheets.com/demo" class="btn btn-p">Schedule Technical Architecture Briefing</a>
+      <a href="https://smartrisksheets.com/demo" class="btn btn-p">Start a 14-Day Free Trial</a>
     </div>
   </div>
 </section>
